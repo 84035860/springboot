@@ -1,0 +1,44 @@
+debug: true
+
+spring:
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+  datasource:
+    url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=UTF8&serverTimezone=UTC
+    username: root
+    password: 84035860
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+    prefix: classpath:/templates/html/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: file:/root/image/
+#    static-locations: file:C://Users/84035/Desktop/static/
+
+server:
+  port: 80
+  servlet:
+    context-path: /
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.myspring.springboot.bean
+
+name: 王政
+age: 12
+
+student:
+  name: 物理奖
+  age: 13
+

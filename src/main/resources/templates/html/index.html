@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        .index_main{background: url("static/image/index_mian_img.jpg") no-repeat center 0;background-size: 100%}
+        .index_main_login_layout{width:30%;height: 40%;background: rgba(255,255,255,0.5);text-align: center;position: absolute;top:50%;left: 50%;transform: translateY(-50%) translateX(-50%)}
+        .bottom_warning{text-align: center}
+    </style>
+</head>
+<body class="index_main">
+
+<div class="index_main_login_layout">
+    <h1>王政的登录页面</h1>
+    <input type="text" id="account" placeholder="请填写您的账号"/></br>
+    <input type="password" id="password" placeholder="请填写您的密码"/></br></br></br>
+    <button type="submit" id="submit">登录</button>
+    <h1 id="warning"></h1>
+
+    <a class="bottom_warning" href = "http://www.beian.miit.gov.cn">浙ICP备19048202号-1</a>
+</div>
+
+<script type="text/javascript" th:src="@{/static/js/login.js}" src = "../../static/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+
+允许在网络服务器上的时候，如果要多个spring boot使用一个或不同个tomcat 就打war包，若不需要 就打jar包（jar包1：1tomcat）
+第一步 file–>project structure 弹框后选中Atifacts—> + ---->jar---->from module with dependenceis
+第二步 选择一个Main Class，然后指定META-INF/MANIFEST.MF的路径为src下（注意不要放到main/java目录下，否则打成的jar中META-INF/MANIFEST.MF不含有Main-Class信息）
+
+
+部署：
+vi 读取文件 i编辑模式
+esc输入命令模式
+:q!  不保存文件，强制退出vi命令
+:w   保存文件，不退出vi命令
+:wq  保存文件，退出vi命令
+
+文件
+    mkdir xx创建文件夹 touch xx创建文件
+
+    rm -f 删除文件  -rf  提示删除
+
+    cd 目录
+
+    ls 本路径下所有目录文件
+
+进程
+    ps  -ef|grep java‘(nginx都行)’            查看进程
+    netstat -tnlp | grep :80  查看端口
+
+    kill -9 27279                             杀死进程
+
+.tar.gz 和 .tgz
+
+    解压：tar zxvf xxxx.tar.gz
+
+    压缩：tar zcvf xxxx.tar.gz DirName
+
+nginx
+    listen 端口
+    server_name ip
+
+    nohup java -jar xxx.jar            后台启动jar包
+
+    /usr/local/nginx/sbin/nginx sudo ./nginx 启动nginx
+
+mysql
+    初始化 MySQL：
+    mysqld --initialize
+
+    systemctl restart mysqld.service
+    systemctl start mysqld.service
+    systemctl stop mysqld.service
+
+    查看 MySQL 运行状态：
+    systemctl status mysqld
+
+    进入sql语句输入
+    无密码mysql -u root
+    有密码mysql -uroot -p
+
+    远程连接保证端口号为3306启动
+        连接远程服务器输入"service mysqld status"查看mysql服务已启动
+        用"cat my.cnf"命令查看my.cnf文件目录：cat /etc/mysql/my.cof
+        用cd /etc/mysql/mysql.conf.d/进入该目录
+        用vim mysqld.cnf编辑文件
+        mysql -u root -p
+        show global variables like 'port';  # 查看MySQL运行的实际端口
+        为3306 就对了
+    保证3306端口对外公开
+        增加公开端口规则
+        iptables -A INPUT -p tcp --dport 3306 -j ACCEPT
+        失败则需要安装iptables-service
+    authentication plugin caching_sha2_password'
+        修改密码命名规则，修改被使用端的（主机）
+        ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '84035860';

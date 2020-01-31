@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myspring.springboot.sql.UserInfoMapper">
+    <select id="findAll" resultType="com.myspring.springboot.bean.TestUserInfoBean">
+        SELECT * FROM test_user_info
+    </select>
+    <select id="findId" resultType="com.myspring.springboot.bean.TestUserInfoBean">
+        SELECT * FROM test_user_info WHERE id = #{id}
+    </select>
+    <update id="updateAll">
+        UPDATE test_user_info set name=#{name},age=#{age},info=#{info} WHERE id = #{id}
+    </update>
+    <insert id="insertAll">
+        INSERT INTO test_user_info VALUES (id = #{id},name = #{name},age = #{age},info = #{info})
+    </insert>
+    <delete id="deleteAll">
+        DELETE FROM test_user_info WHERE id = #{id}
+    </delete>
+</mapper>

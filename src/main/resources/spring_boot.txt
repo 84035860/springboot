@@ -1,0 +1,38 @@
+Spring Initializr - web
+
+自动寻找application同级或下级目录的所有controller
+
+RestController 注解： 该注解是 @Controller 和 @ResponseBody 注解的合体版 （）
+     @RequestMapping("/hello") 可以在controller标记方法，浏览器通过/hello进入
+
+application.properties 或 application.yml 配置文件
+    yml可配置其他信息（name age info )@Value直接在controller标记使用
+    配置bean类名配置信息使用（student)@ConfigurationProperties(prefix = "student") 表示获取前缀为 student 的配置信息（name age），还需要
+    @Component：表明当前类是一个 Java Bean，封装好后再在controller种@Autowired标记使用
+
+
+
+热更新
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+        </dependency>
+
+jdbc
+    spring：下的  datasource:
+                 url: jdbc:mysql://localhost:3306/mysql?useUnicode=true&characterEncoding=UTF8
+                 username: root
+                 password: 84035860
+                 driver-class-name: com.mysql.jdbc.Driver
+
+    然后需要对应bean类后
+                    @Mapper
+                    public interface TestUserMapper {
+
+                        @Select("SELECT * FROM test_user")
+                        List<TestUserBean> findAll();
+                    }
+
+展示界面用@Controller
+返回文字数据用@RestController
